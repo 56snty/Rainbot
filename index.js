@@ -353,4 +353,9 @@ process.on("SIGINT", () => {
   console.log("\n👋  Shutting down …");
   if (socket) socket.disconnect();
   process.exit(0);
+
+// Keep-alive web server for UptimeRobot
+const http = require("http");
+http.createServer((req, res) => res.end("Bot is running!")).listen(3000, () => {
+  console.log("🌐 Keep-alive server on port 3000");
 });
